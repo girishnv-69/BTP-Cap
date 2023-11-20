@@ -3,6 +3,6 @@ LANGUAGE SQLSCRIPT
 SQL SECURITY INVOKER
 AS
 BEGIN
-    result = SELECT "EmpId", "EmpName", "EmpLoc", "Deptno"
+    SELECT "EmpId", "EmpName", "EmpLoc", "Deptno"
              FROM Employee1;
 END;
