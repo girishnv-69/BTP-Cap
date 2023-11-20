@@ -1,0 +1,10 @@
+PROCEDURE "DeleteEmployee1ById" (
+    IN p_EmpId INT
+)
+LANGUAGE SQLSCRIPT
+SQL SECURITY INVOKER
+AS
+BEGIN
+    DELETE FROM Employee1
+    WHERE "EmpId" = :p_EmpId;
+END;

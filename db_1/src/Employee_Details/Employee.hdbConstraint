@@ -1,0 +1,5 @@
+CONSTRAINT class
+ 
+ON "Employee1" FOREIGN KEY ("DeptNo")
+ 
+REFERENCES "Department1"("id") ON UPDATE  CASCADE
