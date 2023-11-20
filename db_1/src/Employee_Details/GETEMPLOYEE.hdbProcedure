@@ -1,11 +1,4 @@
-PROCEDURE "GETALLEMPDETAILS" (
-    OUT result TABLE (
-        "EmpId" INT,
-        "EmpName" NVARCHAR(255),
-        "EmpLoc" NVARCHAR(255),
-        "Deptno" INT
-    )
-)
+PROCEDURE "GETALLEMPDETAILS" ()
 LANGUAGE SQLSCRIPT
 SQL SECURITY INVOKER
 AS
