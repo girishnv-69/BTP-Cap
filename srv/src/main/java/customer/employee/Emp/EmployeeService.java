@@ -15,6 +15,11 @@ public class EmployeeService {
     public Collection<Employee1> getEmployees() {
         return   employeeDAO.getAllEmployee();
     }
+
+
+    public Employee1 getEmployeeById(Long id) {
+        return  employeeDAO.getEmpById(id);
+    }
 }
 
 
