@@ -1,0 +1,12 @@
+ PROCEDURE "ADDEMP" (
+    IN empName VARCHAR(255),
+    IN empLocation VARCHAR(255),
+    IN deptNo INT 
+)
+LANGUAGE SQLSCRIPT
+
+AS
+BEGIN
+    INSERT INTO Employee1 ("EmpName", "EmpLoc", "Deptno")
+    VALUES (:empName, :empLocation, :deptNo);
+END;
