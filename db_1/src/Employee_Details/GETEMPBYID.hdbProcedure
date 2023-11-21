@@ -1,17 +1,8 @@
- PROCEDURE "GETEMPBYID" (
-    IN p_EmpId INT,
-    OUT result TABLE (
-        "EmpId" INT,
-        "EmpName" NVARCHAR(255),
-        "EmpLoc" NVARCHAR(255),
-        "Deptno" INT
-    )
-)
-LANGUAGE SQLSCRIPT
+ PROCEDURE "GETEMPLOYEEBYID" (IN empId INT)
+ LANGUAGE SQLSCRIPT
 SQL SECURITY INVOKER
 AS
 BEGIN
-    result = SELECT "EmpId", "EmpName", "EmpLoc", "Deptno"
-             FROM Employee1
-             WHERE "EmpId" = :p_EmpId;
+    SELECT * FROM Employee1 WHERE EmpId = empId;
 END;
+
