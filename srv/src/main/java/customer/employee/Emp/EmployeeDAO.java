@@ -45,8 +45,8 @@ public class EmployeeDAO
             StoredProcedureQuery spEmployee1ById = entityManager.createStoredProcedureQuery("GETEMPLOYEEBYID", "employee1_mapping");
             
             // Set parameters for the stored procedure (assuming your stored procedure requires an ID parameter).
-            spEmployee1ById.registerStoredProcedureParameter("empId", Long.class, ParameterMode.IN);
-            spEmployee1ById.setParameter("empId", id);
+            spEmployee1ById.registerStoredProcedureParameter("EmpId", Integer.class, ParameterMode.IN);
+            spEmployee1ById.setParameter("EmpId", id);
             
             // Execute the stored procedure.
             spEmployee1ById.execute();
