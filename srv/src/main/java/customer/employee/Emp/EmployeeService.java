@@ -20,6 +20,11 @@ public class EmployeeService {
     public Employee1 getEmployeeById(Long id) {
         return  employeeDAO.getEmpById(id);
     }
+
+
+    public void deleteEmployeeById(Long id) {
+        employeeDAO.deleteEmpById(id);
+    }
 }
 
 

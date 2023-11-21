@@ -58,6 +58,17 @@ public class EmployeeDAO
             throw exception;
         }
     }
+
+    public void deleteEmpById(Long id) {
+        try {
+            StoredProcedureQuery spDeleteEmployee = entityManager.createStoredProcedureQuery("DELETEEMPLOYEEBYID");
+            spDeleteEmployee.registerStoredProcedureParameter("empId", Long.class, ParameterMode.IN);
+            spDeleteEmployee.setParameter("empId", id);
+            spDeleteEmployee.execute();
+        } catch (Exception exception) {
+            throw exception;
+        }
+    }
     
     
 
