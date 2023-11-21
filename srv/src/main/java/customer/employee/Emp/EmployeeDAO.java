@@ -61,7 +61,7 @@ public class EmployeeDAO
 
     public void deleteEmpById(Long id) {
         try {
-            StoredProcedureQuery spDeleteEmployee = entityManager.createStoredProcedureQuery("DELETEEMPLOYEEBYID");
+            StoredProcedureQuery spDeleteEmployee = entityManager.createStoredProcedureQuery("DELETEEMPBYID");
             spDeleteEmployee.registerStoredProcedureParameter("empId", Long.class, ParameterMode.IN);
             spDeleteEmployee.setParameter("empId", id);
             spDeleteEmployee.execute();
