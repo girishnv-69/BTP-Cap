@@ -3,6 +3,6 @@
 SQL SECURITY INVOKER
 AS
 BEGIN
-    SELECT * FROM Employee1 WHERE EmpId = empId;
+    SELECT * FROM Employee1 WHERE "EmpId" = empId;
 END;
 
