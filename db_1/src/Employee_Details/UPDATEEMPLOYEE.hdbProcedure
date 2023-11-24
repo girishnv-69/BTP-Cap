@@ -1,0 +1,16 @@
+PROCEDURE "UPDATEEMPLOYEE" (
+    IN empId INT,
+    IN empName VARCHAR(255),
+    IN empLocation VARCHAR(255),
+    IN deptNo INT
+)
+LANGUAGE SQLSCRIPT
+SQL SECURITY INVOKER
+AS
+BEGIN
+    UPDATE Employee1
+    SET "EmpName" = empName,
+        "EmpLoc" = empLocation,
+        "DeptNo" = deptNo
+    WHERE "EmpId" = empId;
+END;
