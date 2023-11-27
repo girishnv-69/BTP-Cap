@@ -18,7 +18,7 @@
       <f:title>
           <f:DynamicPageTitle>
               <f:heading>
-                  <Title id="titleId" text="Employees"/>
+                  <Title id="titleId" text="Employee1"/>
               </f:heading>
           </f:DynamicPageTitle>
       </f:title>
