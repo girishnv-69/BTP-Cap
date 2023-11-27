@@ -1,0 +1,124 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:uxap="sap.uxap"
+    xmlns:tnt="sap.tnt"
+    xmlns:table="sap.ui.table"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:v="sap.ui.comp.variants"
+    xmlns:smartForm="sap.ui.comp.smartform"
+    xmlns:smartField="sap.ui.comp.smartfield"
+    xmlns:card="sap.f.cards"
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" controllerName="com.project1.webapp.Employee1"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:l="sap.ui.layout">
+  <f:DynamicPage id="page_MngEmployees">
+      <f:title>
+          <f:DynamicPageTitle>
+              <f:heading>
+                  <Title id="titleId" text="Employees"/>
+              </f:heading>
+          </f:DynamicPageTitle>
+      </f:title>
+      <f:header>
+          <f:DynamicPageHeader pinnable="true">
+              <fb:FilterBar id="fb_Employees" persistencyKey="myPersKey" useToolbar="false" search="advancedFilter" showClearOnFB="true" clear="clearAllFilters" filterChange=".onFilterChange" afterVariantLoad=".onAfterVariantLoad">
+                  <fb:filterItems>
+                      <fb:FilterItem name="A" label="Id">
+                          <fb:control>
+                              <Input placeholder="Id" value="{empSearchReqModel>/id}"/>
+                          </fb:control>
+                      </fb:FilterItem>
+                      <fb:FilterItem name="B" label="First Name">
+                          <fb:control>
+                              <Input placeholder="First Name" value="{Employees>first_name}"/>
+                          </fb:control>
+                      </fb:FilterItem>
+                  </fb:filterItems>
+              </fb:FilterBar>
+          </f:DynamicPageHeader>
+      </f:header>
+      <f:content>
+          <Table id="tableEmployees" items="{employeeListMdl>/}" mode="None" sticky="ColumnHeaders,HeaderToolbar" inset="false" class="sapUiSmallMarginTop" selectionChange="onPressSelectRow">
+              <headerToolbar>
+                  <OverflowToolbar>
+                      <content>
+                          <Label design="Bold" text="Items({= ${employeeListMdl>/}.length})" />
+                          <ToolbarSpacer />
+                          <Button icon="sap-icon://download" press="onPressExport" tooltip="Download Excel"/>
+                          <ToolbarSeparator />
+                          <OverflowToolbarButton type="Transparent" tooltip="Sort" icon="sap-icon://sort" press="handleSortButtonPressed"/>
+                          <!-- <OverflowToolbarButton type="Transparent" tooltip="Group" icon="sap-icon://group-2" press="handleGroupButtonPressed"/> -->
+                          <!-- <OverflowToolbarButton type="Transparent" icon="sap-icon://settings" tooltip="Settings" press="handlePersoButtonPressed" /> -->
+                      </content>
+                  </OverflowToolbar>
+              </headerToolbar>
+              <columns>
+                  <Column hAlign="Begin">
+                      <Text text="Id" />
+                  </Column>
+                  <Column hAlign="Begin" minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline">
+                      <Text text="First Name" />
+                  </Column>
+                  <Column hAlign="Begin" minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline">
+                      <Text text="Gender" />
+                  </Column>
+                  <Column hAlign="Begin" minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline">
+                      <Text text="Mobile" />
+                  </Column>
+                  <Column hAlign="Center" minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline">
+                      <Text text="DOB" />
+                  </Column>
+                  <Column hAlign="Begin" minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline">
+                      <Text text="Marital Status" />
+                  </Column>
+                  <Column hAlign="Center">
+                      <Text text="E-Mail" />
+                  </Column>
+                   <Column hAlign="Begin" minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline">
+                      <Text text="Created By" />
+                  </Column>
+                   <Column hAlign="Begin" minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline">
+                      <Text text="Created On" />
+                  </Column>
+                   <Column hAlign="Begin" minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline">
+                      <Text text="modified By" />
+                  </Column>
+                  <Column hAlign="Begin" minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline">
+                      <Text text="modified On" />
+                  </Column>
+                  <Column hAlign="Begin" minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline">
+                      <Text text="Status" />
+                  </Column>
+              </columns>
+              <items>
+                  <ColumnListItem type="Navigation" >
+                      <cells>
+                          <Link text="{employeeListMdl>id}" wrapping="false" press="onPressEditEmployee"/>
+                          <Text text="{employeeListMdl>first_name}" wrapping="false" />
+                          <Text text="{employeeListMdl>gender}" wrapping="false" />
+                          <Text text="{employeeListMdl>mobile}" wrapping="false" />
+                          <Text text="{employeeListMdl>dob}" wrapping="false" />
+                          <Text text="{employeeListMdl>marital_status}" wrapping="false" />
+                          <Text text="{employeeListMdl>email}" wrapping="false" />
+                          <Text text="{employeeListMdl>created_by}" wrapping="false" />
+                          <Text text="{employeeListMdl>created_on}" wrapping="false" />
+                          <Text text="{employeeListMdl>modified_by}" wrapping="false" />
+                          <Text text="{employeeListMdl>modified_on}" wrapping="false" />
+                          <Text text="{employeeListMdl>status}" wrapping="false" />
+                          <!-- <Text text="{parts:[{path:'settings>/userSettings/dateFormatKey'}, {path:'employeeListMdl>dob'}], formatter: '.getDateFormats'}"/>
+                          <ObjectStatus text="{employeeListMdl>statusText}" state="{=${employeeListMdl>statusText} === 'Active' ? 'Success' : 'Error'}"/> -->
+                      </cells>
+                  </ColumnListItem>
+              </items>
+          </Table>
+      </f:content>
+      <f:footer>
+          <Toolbar>
+              <Button id="btn_MngEmployeeError" visible="{=!!${errors>/}.length}" icon="sap-icon://error" type="Negative" text="Error" press=".handleMessagePopoverPress" ariaHasPopup="Dialog" />
+          </Toolbar>
+      </f:footer>
+  </f:DynamicPage>
+</mvc:View>

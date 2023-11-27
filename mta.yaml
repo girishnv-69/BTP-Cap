@@ -31,6 +31,30 @@ modules:
   path: db_1
   requires:
   - name: hdi_db_1
+- name: Employee-app-content
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: Employee-repo-host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - project1.zip
+      name: project1
+      target-path: resources/
+- name: project1
+  type: html5
+  path: project1
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
 resources:
 - name: hdi_db
   type: com.sap.xs.hdi-container
@@ -40,5 +64,30 @@ resources:
   type: com.sap.xs.hdi-container
   properties:
     hdi-container-name: ${service-name}
+- name: Employee-repo-host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: Employee-html5-srv
+    service-plan: app-host
+- name: Employee-destination-service
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      HTML5Runtime_enabled: false
+      init_data:
+        instance:
+          destinations:
+          - Authentication: NoAuthentication
+            Name: ui5
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://ui5.sap.com
+          existing_destinations_policy: update
+      version: 1.0.0
+    service: destination
+    service-name: Employee-destination-service
+    service-plan: lite
 parameters:
+  deploy_mode: html5-repo
   enable-parallel-deployments: true
