@@ -1,7 +1,7 @@
 ## Application Details
 |               |
 | ------------- |
-|**Generation Date and Time**<br>Mon Nov 27 2023 08:52:22 GMT+0000 (Coordinated Universal Time)|
+|**Generation Date and Time**<br>Thu Nov 30 2023 09:40:54 GMT+0000 (Coordinated Universal Time)|
 |**App Generator**<br>@sap/generator-fiori-freestyle|
 |**App Generator Version**<br>1.11.5|
 |**Generation Platform**<br>SAP Business Application Studio|

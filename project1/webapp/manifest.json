@@ -13,7 +13,7 @@
     "sourceTemplate": {
       "id": "@sap/generator-fiori:basic",
       "version": "1.11.5",
-      "toolsId": "8669387b-c8bc-43d8-a944-b937e0c1e363"
+      "toolsId": "72990e2e-7382-4f32-acbc-eccbbded1c10"
     }
   },
   "sap.ui": {
@@ -79,15 +79,9 @@
       "routes": [
         {
           "name": "RouteView1",
-          "pattern": "ab",
+          "pattern": ":?query:",
           "target": [
             "TargetView1"
-          ]
-        },{
-          "name": "Employee1",
-          "pattern": "",
-          "target": [
-            "Employee1"
           ]
         }
       ],
@@ -98,13 +92,6 @@
           "clearControlAggregation": false,
           "viewId": "View1",
           "viewName": "View1"
-        },
-        "Employee1": {
-          "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "Employee1",
-          "viewName": "Employees1"
         }
       }
     },
