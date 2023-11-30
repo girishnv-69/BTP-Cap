@@ -68,30 +68,29 @@
     },
     "routing": {
       "config": {
-        "routerClass": "sap.m.routing.Router",
+        "routerClass": "sap.f.routing.Router",
+        "type": "View",
         "viewType": "XML",
         "async": true,
-        "viewPath": "project1.view",
-        "controlAggregation": "pages",
-        "controlId": "app",
-        "clearControlAggregation": false
+        "path": "com.sampleapp.view",
+        "controlId": "flexibleColumnLayout",
+        "transition":"slide"
       },
       "routes": [
         {
-          "name": "RouteView1",
-          "pattern": ":?query:",
+          "name": "View1",
+          "pattern": "",
           "target": [
-            "TargetView1"
+            "View1"
+            
           ]
         }
       ],
       "targets": {
-        "TargetView1": {
-          "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "View1",
-          "viewName": "View1"
+        "View1": {
+          "name": "View1",
+          "controlAggregation": "beginColumnPages"
+     
         }
       }
     },
