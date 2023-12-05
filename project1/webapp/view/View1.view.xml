@@ -20,7 +20,7 @@
   xmlns:smartField="sap.ui.comp.smartfield"
   xmlns:card="sap.f.cards"
   xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
-  controllerName="project1.controller.View1"
+  controllerName="com.project1.controller.View1"
   xmlns:html="http://www.w3.org/1999/xhtml"
   xmlns:l="sap.ui.layout"
 >
