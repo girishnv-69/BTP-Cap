@@ -1,5 +1,9 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller"
+    
+    "sap/ui/core/mvc/Controller",
+    "com/sampleapp/model/URLConstants",
+    "sap/ui/model/json/JSONModel",
+    "sap/f/library"
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
@@ -9,7 +13,7 @@ sap.ui.define([
 
         return Controller.extend("project1.controller.View1", {
             onInit: function () {
-                var ownerComponent = this.getOwnerComponent();
+              //  var ownerComponent = this.getOwnerComponent();
                 this.oRouter = this.getOwnerComponent().getRouter();
                  this.getEmployees();
              
