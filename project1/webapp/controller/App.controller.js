@@ -1,11 +1,12 @@
 sap.ui.define(
     [
-        "sap/ui/core/mvc/Controller"
+        "sap/ui/core/mvc/Controller",
+        "com/payroll/payrollapp/controller/BaseController",
     ],
-    function(BaseController) {
+    function(Controller,BaseController) {
       "use strict";
   
-      return BaseController.extend("project1.controller.App", {
+      return BaseController.extend("com.project1.controller.App", {
         onInit: function () {
           this.oOwnerComponent = this.getOwnerComponent();
           this.oRouter = this.oOwnerComponent.getRouter();

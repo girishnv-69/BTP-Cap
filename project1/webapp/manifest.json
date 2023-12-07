@@ -72,7 +72,7 @@
         "type": "View",
         "viewType": "XML",
         "async": true,
-        "path": "com.sampleapp.view",
+        "path": "com.project1.view",
         "controlId": "flexibleColumnLayout",
         "transition":"slide"
       },
@@ -95,7 +95,7 @@
       }
     },
     "rootView": {
-      "viewName": "project1.view.App",
+      "viewName": "com.project1.view.App",
       "type": "XML",
       "async": true,
       "id": "App"
