@@ -30,6 +30,9 @@ public class Employee1 {
     private String EmpLoc;
     private Integer Deptno;
 
+    public Employee1() {
+    }
+
     public Employee1(Integer EmpId, String EmpName, String EmpLoc, Integer Deptno) {
         this.EmpId = EmpId;
         this.EmpName = EmpName;

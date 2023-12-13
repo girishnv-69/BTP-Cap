@@ -1,56 +1,53 @@
 package customer.employee.Emp;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.ParameterMode;
 import javax.persistence.PersistenceContext;
 import javax.persistence.StoredProcedureQuery;
-import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.persistence.ParameterMode;
 
 @Component
+@Repository
 @Transactional
-public class EmployeeDAO
- {
-    @PersistenceContext                  //used to inject an EntityManager into the application.
-                                        // An EntityManager is part of the Java Persistence API (JPA) and 
-                                        //provides methods for interacting with the database
+public class EmployeeDAO {
+    @PersistenceContext
     private EntityManager entityManager;
-    
-    public Collection<Employee1> getAllEmployee(){
+
+    public Collection<Employee1> getAllEmployeeByselectedfields() {
         try {
-            List<Employee1> result = new ArrayList<Employee1>(); // Creating the empty arrayList
-            if(entityManager!= null)
-            {
-                StoredProcedureQuery spEmployee1 = entityManager.createStoredProcedureQuery("GETALLEMPDETAILS", "employee1_mapping");
-                spEmployee1.execute(); // Executing the store procedure
-                @SuppressWarnings("unchecked")
-                List<Employee1> tempResult = spEmployee1.getResultList();
-                result.addAll(tempResult);
-            }
-            return result;
+            StoredProcedureQuery spCompanies = entityManager
+                    .createStoredProcedureQuery("GETALLEMPDETAILS", "employee1_mapping");
+            spCompanies.execute();
+            @SuppressWarnings("unchecked")
+            List<Employee1> results = spCompanies.getResultList();
+            return results;
         } catch (Exception exception) {
-           throw exception;
+            throw exception;
         }
     }
 
     public Employee1 getEmpById(Long id) {
         try {
-            // Create a stored procedure query named "GETEMPLOYEEBYID" with the result mapping "employee1_mapping".
-            StoredProcedureQuery spEmployee1ById = entityManager.createStoredProcedureQuery("GETEMPLOYEEBYID", "employee1_mapping");
-            
-            // Set parameters for the stored procedure (assuming your stored procedure requires an ID parameter).
+            // Create a stored procedure query named "GETEMPLOYEEBYID" with the result
+            // mapping "employee1_mapping".
+            StoredProcedureQuery spEmployee1ById = entityManager.createStoredProcedureQuery("GETEMPLOYEEBYID",
+                    "employee1_mapping");
+
+            // Set parameters for the stored procedure (assuming your stored procedure
+            // requires an ID parameter).
             spEmployee1ById.registerStoredProcedureParameter("empId", Long.class, ParameterMode.IN);
             spEmployee1ById.setParameter("empId", id);
-            
+
             // Execute the stored procedure.
             spEmployee1ById.execute();
-            
+
             // Get the single result from the stored procedure execution.
             Employee1 result = (Employee1) spEmployee1ById.getSingleResult();
             return result;
@@ -69,7 +66,26 @@ public class EmployeeDAO
             throw exception;
         }
     }
-    
-    
+
+    public void addEmployee(Employee1 employee) {
+        try {
+            // Assuming you have a stored procedure or a query for adding an employee
+            StoredProcedureQuery spAddEmployee = entityManager.createStoredProcedureQuery("ADDEMP");
+            // spAddEmployee.registerStoredProcedureParameter("empId", Integer.class,
+            // ParameterMode.IN);
+            spAddEmployee.registerStoredProcedureParameter("empName", String.class, ParameterMode.IN);
+            spAddEmployee.registerStoredProcedureParameter("empLocation", String.class, ParameterMode.IN);
+            spAddEmployee.registerStoredProcedureParameter("deptno", Integer.class, ParameterMode.IN);
+
+            // spAddEmployee.setParameter("empId", employee.getEmpId());
+            spAddEmployee.setParameter("empName", employee.getEmpName());
+            spAddEmployee.setParameter("empLocation", employee.getEmpLoc());
+            spAddEmployee.setParameter("deptno", employee.getDeptno());
+
+            spAddEmployee.execute();
+        } catch (Exception exception) {
+            throw exception;
+        }
+    }
 
 }

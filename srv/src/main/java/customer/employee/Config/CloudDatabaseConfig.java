@@ -1,4 +1,5 @@
 package customer.employee.Config;
+
 import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.jdbc.DataSourceBuilder;
@@ -7,30 +8,29 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import com.zaxxer.hikari.HikariDataSource;
- 
+
 @Configuration
 @Profile("cloud")
 public class CloudDatabaseConfig extends AbstractCloudConfig {
-   
+
     @Bean
-   
-    public DataSource dataSource(@Value("${hana.url}")final String url,
-            @Value("${hana.user}")final String user,
-            @Value("${hana.password}")final String password) {
-                try {
-                    Class.forName("com.sap.db.jdbc.Driver");
-                } catch (ClassNotFoundException e) {
-                    throw new RuntimeException("SAP HANA JDBC driver not found", e);
-                }
-               
-       
+
+    public DataSource dataSource(@Value("${hana.url}") final String url,
+            @Value("${hana.user}") final String user,
+            @Value("${hana.password}") final String password) {
+        try {
+            Class.forName("com.sap.db.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException("SAP HANA JDBC driver not found", e);
+        }
+
         return DataSourceBuilder.create()
                 .type(HikariDataSource.class)
                 .driverClassName(com.sap.db.jdbc.Driver.class.getName())
                 .url(url)
                 .username(user)
                 .password(password)
-                .build();  
- 
+                .build();
+
     }
 }
