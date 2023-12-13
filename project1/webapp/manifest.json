@@ -1,5 +1,5 @@
 {
-  "_version": "1.59.0",
+  "_version": "1.58.0",
   "sap.app": {
     "id": "project1",
     "type": "application",
@@ -12,8 +12,8 @@
     "resources": "resources.json",
     "sourceTemplate": {
       "id": "@sap/generator-fiori:basic",
-      "version": "1.11.5",
-      "toolsId": "72990e2e-7382-4f32-acbc-eccbbded1c10"
+      "version": "1.11.4",
+      "toolsId": "cf47e585-daf7-465f-bf2d-1cd9e202a2d5"
     }
   },
   "sap.ui": {
@@ -55,7 +55,7 @@
       "i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
-          "bundleName": "project1.i18n.i18n"
+          "bundleName": "com.project1.i18n.i18n"
         }
       }
     },
@@ -68,30 +68,66 @@
     },
     "routing": {
       "config": {
-        "routerClass": "sap.f.routing.Router",
+        "routerClass": "sap.m.routing.Router",
         "type": "View",
         "viewType": "XML",
         "async": true,
-        "path": "com.project1.view",
-        "controlId": "flexibleColumnLayout",
-        "transition":"slide"
+        "viewPath": "com.project1.view",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearControlAggregation": false
       },
       "routes": [
         {
-          "name": "View1",
-          "pattern": "",
+          "name": "RouteView",
+          "pattern": ":?query:",
           "target": [
-            "View1"
-            
+            "TargetView"
+          ]
+        },
+        {
+          "name":"dashboard",
+          "pattern":"dashboard",
+          "target":[
+            "Dashboard"
+          ]
+        },
+        {
+          "name": "emp-table",
+          "pattern": "emp-table",
+          "target": [
+            "Employee"
           ]
         }
+
+        
       ],
       "targets": {
-        "View1": {
-          "name": "View1",
-          "controlAggregation": "beginColumnPages"
-     
+        "AppUnified": {
+          "viewName": "AppUnified"
+      },
+        "TargetView": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "View",
+          "viewName": "View"
+        },
+        "Dashboard":{
+          "viewType":"XML",
+          "transition":"slide",
+          "viewName":"Dashboard"
+        },
+        "Employee": {
+          "viewName": "employee.Employee",
+          "viewType": "XML",
+          "transition": "slide",
+          "viewId": "Employee",
+          "parent": "AppUnified",
+          "controlId": "fcl",
+          "controlAggregation": "beginColumnPages"   
         }
+       
       }
     },
     "rootView": {

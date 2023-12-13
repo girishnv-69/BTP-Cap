@@ -1,9 +1,9 @@
+App.js
 sap.ui.define(
     [
-        "sap/ui/core/mvc/Controller",
-        "com/payroll/payrollapp/controller/BaseController",
+        "sap/ui/core/mvc/Controller"
     ],
-    function(Controller,BaseController) {
+    function(BaseController) {
       "use strict";
   
       return BaseController.extend("com.project1.controller.App", {
@@ -36,4 +36,3 @@ sap.ui.define(
       }
   });
       });
-  
