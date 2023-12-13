@@ -3,11 +3,20 @@
  */
 
 sap.ui.define([
+<<<<<<< HEAD
     'sap/ui/core/UIComponent',
 	'sap/ui/model/json/JSONModel',
 	'sap/f/library'
 ], function(UIComponent, JSONModel, fioriLibrary) {
 	'use strict';
+=======
+        "sap/ui/core/UIComponent",
+        "sap/ui/Device",
+        "sap/ui/model/json/JSONModel",
+    ],
+    function (UIComponent, Device,JSONModel) {
+        "use strict";
+>>>>>>> f1f75a93dd1d77be4afcf400924127fa2e87e50f
 
 	return UIComponent.extend('com.project1.Component', {
 

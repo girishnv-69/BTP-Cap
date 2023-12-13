@@ -3,6 +3,97 @@
     xmlns="sap.f">
     <!-- <Page id="page" title="{i18n>title}">
         <content />
+<<<<<<< HEAD
     </Page> -->
      
+=======
+    </Page>
+</mvc:View> -->
+<mvc:View
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+  xmlns:f="sap.f"
+  xmlns:core="sap.ui.core"
+  xmlns:form="sap.ui.layout.form"
+  xmlns:uxap="sap.uxap"
+  xmlns:tnt="sap.tnt"
+  xmlns:table="sap.ui.table"
+  xmlns:fb="sap.ui.comp.filterbar"
+  xmlns:v="sap.ui.comp.variants"
+  xmlns:smartForm="sap.ui.comp.smartform"
+  xmlns:smartField="sap.ui.comp.smartfield"
+  xmlns:card="sap.f.cards"
+  xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+  controllerName="com.project1.controller.View1"
+  xmlns:html="http://www.w3.org/1999/xhtml"
+  xmlns:l="sap.ui.layout"
+>
+  <f:DynamicPage id="page_UserData">
+    <f:title>
+      <f:DynamicPageTitle>
+        <f:heading>
+          <Title id="titleId" text="User Data" />
+          <!-- <Button text="New data" press="insertdata" /> -->
+        </f:heading>
+      </f:DynamicPageTitle>
+    </f:title>
+    <f:header>
+          <f:DynamicPageHeader pinnable="true">
+              <fb:FilterBar id="fb_Employees" persistencyKey="myPersKey" useToolbar="false" search="advancedFilter" showClearOnFB="true" clear="clearAllFilters" filterChange=".onFilterChange" afterVariantLoad=".onAfterVariantLoad">
+                  <fb:filterItems>
+                      <!-- <fb:FilterItem name="A" label="Id">
+                          <fb:control>
+                              <Input placeholder="Id" value="{userDataMdl>{id}"/>
+                          </fb:control>
+                      </fb:FilterItem> -->
+                      <fb:FilterItem name="B" label="Username">
+                          <fb:control>
+                              <Input placeholder="Username" value="{userDataMdl>username}"/>
+                          </fb:control>
+                      </fb:FilterItem>
+                  </fb:filterItems>
+              </fb:FilterBar>
+          </f:DynamicPageHeader>
+      </f:header>
+    <f:content>
+      <Table
+        id="tableUserData"
+        items="{userDataMdl>/}"
+       
+        mode="None"
+        sticky="ColumnHeaders,HeaderToolbar"
+        inset="false"
+        class="sapUiSmallMarginTop"
+      >
+        <columns>
+           <!-- <Column>
+            <Text text="User ID" />
+          </Column> -->
+          <Column>
+            <Text text="EmpName" />
+          </Column>
+          <Column>
+            <Text text="EmpLoc" />
+          </Column>
+          <Column>
+            <Text text="DeptNo" />
+          </Column>
+         
+        </columns>
+        <items>
+          <ColumnListItem type="Navigation">
+            <cells>
+              <!-- <Text text="{userDataMdl>user_id}" /> -->
+              <Text text="{userDataMdl>EmpName}" />
+              <Text text="{userDataMdl>EmpLoc}" />
+              <Text text="{userDataMdl>DeptNo}" />
+                <ObjectNumber number="{userDataMdl>registration_date}"/>
+              <Text text="{userDataMdl>status}" />
+            </cells>
+          </ColumnListItem>
+        </items>
+      </Table>
+    </f:content>
+  </f:DynamicPage>
+>>>>>>> f1f75a93dd1d77be4afcf400924127fa2e87e50f
 </mvc:View>
