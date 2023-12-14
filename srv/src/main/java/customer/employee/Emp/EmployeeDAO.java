@@ -88,7 +88,6 @@ public class EmployeeDAO {
         }
     }
 
-
     public void updateEmployee(Long empId, Employee1 updatedEmployee) {
         try {
             StoredProcedureQuery spUpdateEmployee = entityManager.createStoredProcedureQuery("UPDATEEMPLOYEE");
@@ -99,8 +98,8 @@ public class EmployeeDAO {
 
             spUpdateEmployee.setParameter("empId", empId);
             spUpdateEmployee.setParameter("empName", updatedEmployee.getEmpName());
-            spUpdateEmployee.setParameter("empLocation", updatedEmployee.getEmpLocation());
-            spUpdateEmployee.setParameter("deptNo", updatedEmployee.getDeptNo());
+            spUpdateEmployee.setParameter("empLocation", updatedEmployee.getEmpLoc());
+            spUpdateEmployee.setParameter("deptNo", updatedEmployee.getDeptno());
 
             spUpdateEmployee.execute();
         } catch (Exception exception) {
