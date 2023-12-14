@@ -30,4 +30,8 @@ public class EmployeeService {
     public void addEmployee(Employee1 employee) {
         employeeDAO.addEmployee(employee);
     }
+
+    public void updateEmployee(Long empId, Employee1 updatedEmployee) {
+        employeeDAO.updateEmployee(empId, updatedEmployee);
+    }
 }

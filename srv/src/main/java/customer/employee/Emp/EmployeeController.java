@@ -48,4 +48,14 @@ public class EmployeeController {
         return new ResponseEntity<>("Employee added successfully", HttpStatus.CREATED);
     }
 
+    @PostMapping("/update/{id}")
+    public ResponseEntity<String> updateEmployee(@PathVariable Long id, @RequestBody Employee1 updatedEmployee) {
+        if (employeeService.getEmployeeById(id) != null) {
+            employeeService.updateEmployee(id, updatedEmployee);
+            return new ResponseEntity<>("Employee updated successfully", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Employee not found", HttpStatus.NOT_FOUND);
+        }
+    }
+
 }
